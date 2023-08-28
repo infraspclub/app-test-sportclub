@@ -1,13 +1,16 @@
-FROM ubuntu
+# Utiliza la imagen base de Ubuntu
+FROM ubuntu:latest
 
+# Etiqueta de mantenimiento (opcional)
+LABEL maintainer="tu_nombre"
 
-# Copia un archivo de configuración personalizado al contenedor
-COPY index.html /usr/share/nginx/html/index.html
+# Actualiza el índice del repositorio e instala paquetes básicos
+RUN apt-get update && \
+    apt-get install -y \
+    curl \
+    wget \
+    nano \
+    && apt-get clean
 
-COPY default.conf /etc/nginx/conf.d/default.conf
-
-# Expone el puerto 80 para tráfico HTTP
-EXPOSE 80
-
-# Comando que se ejecutará cuando el contenedor inicie
+# Comando por defecto cuando se inicie el contenedor
 CMD ["bash"]
