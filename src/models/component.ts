@@ -22,10 +22,7 @@ Component.init(
     name: {
       type: DataTypes.STRING,
     },
-    sectionId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+
   },
   {
     sequelize,

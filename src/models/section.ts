@@ -9,11 +9,13 @@ import {
 import sequelize from '../db'
 
 import Page from './page'
+import Component from './component'
 
 class Section extends Model<InferAttributes<Section>, InferCreationAttributes<Section>> {
   declare id?: number
   declare name: string
-  declare pageId: number | string
+  declare components?: Component[]
+  declare pageId?: number
   declare setPage: HasOneCreateAssociationMixin<Page>
 }
 
@@ -21,10 +23,6 @@ Section.init(
   {
     name: {
       type: DataTypes.STRING,
-    },
-    pageId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
     },
   },
   {

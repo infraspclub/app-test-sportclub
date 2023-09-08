@@ -2,10 +2,12 @@
 import { DataTypes, InferAttributes, InferCreationAttributes, Model } from 'sequelize'
 
 import sequelize from '../db'
+import Page from './page'
 
 class Platform extends Model<InferAttributes<Platform>, InferCreationAttributes<Platform>> {
   declare id?: number
   declare name: string
+  declare pages?: Page[]
 }
 
 Platform.init(

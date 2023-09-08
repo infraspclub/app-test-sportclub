@@ -405,6 +405,41 @@
         }
       }
     },
+    "/component/filter": {
+      "get": {
+        "tags": [
+          "Component"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "platformName",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "pageName",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sectionName",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "componentName",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
     "/component/{name}": {
       "get": {
         "tags": [
@@ -628,6 +663,9 @@
                   "example": "any"
                 },
                 "textLink": {
+                  "example": "any"
+                },
+                "order": {
                   "example": "any"
                 }
               }
@@ -1190,6 +1228,42 @@
           },
           "500": {
             "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/sendEmail/aptos": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "example": "any"
+                },
+                "user_nombre": {
+                  "example": "any"
+                },
+                "user_email": {
+                  "example": "any"
+                },
+                "user_apellido": {
+                  "example": "any"
+                },
+                "image": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
           }
         }
       }

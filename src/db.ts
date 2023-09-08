@@ -1,11 +1,11 @@
-import { Sequelize } from 'sequelize'
+import { Dialect, Sequelize } from 'sequelize'
 import dotenv from 'dotenv'
 
 dotenv.config()
 
-const sequelize = new Sequelize('postgres', 'sportclub', process.env.DB_PASSWORD as string, {
-  host: process.env.DB_URL as string,
-  dialect: 'postgres',
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD as string, {
+  host: process.env.DB_HOST as string,
+  dialect: process.env.DB_DIALECT as Dialect,
   logging: false,
   schema: 'autogestion',
 })
