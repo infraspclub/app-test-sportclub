@@ -1,15 +1,13 @@
-FROM node:latest AS builder
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
-COPY . .
-RUN npm install \
-&& npm run swagger-autogen \
-&& npm run build
+FROM nginx
 
-FROM node:latest AS final
-WORKDIR /usr/src/app
-COPY --from=builder ./usr/src/app/dist ./dist
-COPY package.json .
-RUN npm install
-COPY .env .
-CMD ["npm", "start"]
+
+# Copia un archivo de configuración personalizado al contenedor
+COPY index.html /usr/share/nginx/html/index.html
+
+COPY default.conf /etc/nginx/conf.d/default.conf
+
+# Expone el puerto 80 para tráfico HTTP
+EXPOSE 80
+
+# Comando que se ejecutará cuando el contenedor inicie
+CMD ["nginx", "-g", "daemon off;"]
